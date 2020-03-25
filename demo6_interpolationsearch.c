@@ -4,18 +4,20 @@
 /*
 Author: Bhoj Bahadur Karki
 purpose : Linear Search algorithm testing.
-date: 2020-March-25th
-Notes: Runtime complexity of Binary search algorithm is  Ο(log n) 
+date: 2020-March-26th
+Note: Interpolation search is a variant of binary search
+      Runtime complexity of interpolation search algorithm is Ο(log (log n)) 
+      as compared to Ο(log n) of Binary search
 */
 
 // array initialization 
 int array_storage[MAX] = {2,6,22,33,44,55,77,82,94,160};
 
-int FindUsingBinarySearch(int value){
+int FindUsingInterpolationSearch(int value){
     /*
-    Algo. for binary search
+    Algo. for Interpolation search
     1. arrange the item in ascending order
-    2. calculate the mid term and compare
+    2. calculate the mid term(probe position using formula) and compare
     3. if mid term is equal we we have our element.
     4. else if mid term is > value then , item is in lower half else item is in upper half
     5. repeat 2 to 4 again until we find element or upper_bound  > lower_bound 
@@ -33,8 +35,11 @@ int FindUsingBinarySearch(int value){
         comparision++;
         printf("\ncomparision=  %d ",comparision);
     
-        // NOTE: HERE WE CAN NOT DO LIKE (lower_bound+(upper_bound+lower_bound))/2 this will be error.
-        mid_point = lower_bound + (upper_bound-lower_bound)/2;
+        // mid_point = lower_bound + (upper_bound-lower_bound)/2; // This one is for binarhy search
+        // probe the mid point 
+        mid_point = lower_bound + (((double)(upper_bound - lower_bound) / (array_storage[upper_bound] - array_storage[lower_bound])) * (value - array_storage[lower_bound]));
+
+      
         printf("\nmid point  = %d",mid_point);
         printf("\n--------------------------");
 
@@ -62,7 +67,7 @@ int main(){
 
     int search_item = 160;
 
-    int found = FindUsingBinarySearch(search_item);
+    int found = FindUsingInterpolationSearch(search_item);
 
     if (found != -1){
         printf("\nItem found %d at %d",search_item,found);
