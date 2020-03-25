@@ -201,7 +201,7 @@ int main(){
 
     // deleting item and reprinting
 
-    while(head != NULL){
+    while(!IsEmpty()){  // or we can do: while(head != NULL){}
         // Keep deleting first item until all deleted
         struct LinkedListNode * deleteditem = DeleteFirstItem();
         printf("\ndeleted item: (%d,%d) ",deleteditem->key,deleteditem->data);
@@ -264,8 +264,4 @@ int main(){
 
     return 0;
 }
-
-
-
-
 
