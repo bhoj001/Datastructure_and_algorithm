@@ -1,11 +1,22 @@
 #include <stdio.h>
 
 
+
+// void rand_fxn(){
+//         // char* current;
+
+//         // printf("current value = %s",current);
+//         // printf("fwfe");
+// }
+
 void main(){
 
-    char xval[] = "x";     
+    char* current = "roshan rawal";
+    printf("hifewfo\n");
+    // rand_fxn();
+    printf("current value = %s\n",current);
+    printf("hifewfo\n");
 
-    printf("some value = %s", xval);
     
 
 }
