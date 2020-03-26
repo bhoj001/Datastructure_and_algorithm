@@ -19,12 +19,10 @@ int HashCode(int key){
 }
 
 // Search Item
-
 struct DataItem * SearchUsingKey(int key){
-
     // get hash code
     int hashindex = HashCode(key);
-    printf("\n***hash index and value = (%d,%d)***",hashindex,HashArray[hashindex]);
+    // printf("\n***hash index and value = (%d,%d)***",hashindex,HashArray[hashindex]);
 
     while(HashArray[hashindex] != NULL ){
         
@@ -35,12 +33,10 @@ struct DataItem * SearchUsingKey(int key){
         ++hashindex;
         // wrap around the table
         hashindex %= SIZE;
-    
-        
     }
-    // printf("\n*****Return null ");
     return NULL;
 }
+
 // Insert item 
 void Insert(int key, int data){
     struct DataItem * item = (struct DataItem*)malloc(sizeof(struct DataItem));
