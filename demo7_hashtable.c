@@ -15,7 +15,7 @@ struct DataItem * DummyItem;
 struct DataItem * Item;
 
 int HashCode(int key){
-    return key % SIZE;
+    return key%SIZE;
 }
 
 // Search Item
@@ -24,17 +24,21 @@ struct DataItem * SearchUsingKey(int key){
 
     // get hash code
     int hashindex = HashCode(key);
+    printf("\n***hash index and value = (%d,%d)***",hashindex,HashArray[hashindex]);
 
-
-    while(HashArray[hashindex]!= NULL){
-        if (HashArray[hashindex]->key == key){
-            // found return item 
+    while(HashArray[hashindex] != NULL ){
+        
+        if (HashArray[hashindex]->key == key)
             return HashArray[hashindex];
-        }else{
-            ++hashindex;
-            hashindex %= SIZE;
-        }
+        
+        // go to next cell
+        ++hashindex;
+        // wrap around the table
+        hashindex %= SIZE;
+    
+        
     }
+    // printf("\n*****Return null ");
     return NULL;
 }
 // Insert item 
@@ -125,9 +129,12 @@ int main(){
     printf("AFTER insert \n HashTable=");
     DisplayHashArray();
 
+    int key = 37;
+
     // search key
-    printf("\nsearch item with key 14:");
-    Item = SearchUsingKey(14);
+    printf("\nsearch item with key %d:",key);
+    
+    Item = SearchUsingKey(key);
     if (Item != NULL){
         printf("\nItem found (%d,%d)",Item->key,Item->data);
     }else{
@@ -136,11 +143,11 @@ int main(){
 
     // delete item
     // item is already defined above
-    printf("\n\ndelete 14");
+    printf("\n\ndelete %d",key);
     Item = Delete(Item);
     // Once delete search again
-    printf("\nsearch item with key 14:");
-    Item = SearchUsingKey(14);
+    printf("\nsearch item with key %d:",key);
+    Item = SearchUsingKey(key);
     if (Item != NULL){
         printf("\nItem found (%d,%d):",Item->key,Item->data);
     }else{
