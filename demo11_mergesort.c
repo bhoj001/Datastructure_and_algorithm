@@ -12,8 +12,6 @@ date: 2020-March-26th
 int a[11] = {2,99,33,44,11,55,55676,77,85,6,0};
 int b[10];
 
-
-
 void DisplayItem(){
 
     printf("[");
@@ -61,7 +59,6 @@ void MergeSort(int low,int high){
     else{
         return;
     }
-
 }
 
 
